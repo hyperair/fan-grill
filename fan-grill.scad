@@ -3,11 +3,11 @@ use <MCAD/array/along_curve.scad>
 use <MCAD/shapes/2Dshapes.scad>
 use <MCAD/general/utilities.scad>
 
-fan_d = 300;
-fan_hub_d = 60;
+fan_d = 144;
+fan_hub_d = 65;
 
-fan_width = 310;
-screwhole_distance = 300 - 20;
+fan_width = 150;
+screwhole_distance = 130;
 screwhole_d = 3;
 
 grill_h = 3;
@@ -27,7 +27,7 @@ module grill_shape ()
     begin_r = 0;
     end_r = fan_r + 20;
 
-    function angle_at_r (r) = 45 / (end_r - begin_r) * r;
+    function angle_at_r (r) = 20 / (end_r - begin_r) * r;
     function point (r) = [r, angle_at_r (r)];
 
     module basic_shape ()
@@ -66,7 +66,7 @@ module grill_shape ()
                     [
                         for (x = [0:200])
                             let (r = (200 - x) / 200 * (end_r - begin_r))
-                            conv2D_polar2cartesian (point (r)) + [-1, 1] * 3
+                            conv2D_polar2cartesian (point (r)) + [-1, 1] * 1.2
                     ]
                 )
             );
